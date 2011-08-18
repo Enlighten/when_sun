@@ -1,6 +1,8 @@
 = when_sun
 
-Description goes here.
+WhenSun is a RubyGem for calculating the sunrise and sunset for locations based on the date, latitude and longitude.
+
+This gem is based on https://github.com/joeyates/ruby-sun-times implementation of http://williams.best.vwh.net/sunrise_sunset_algorithm.htm
 
 == Contributing to when_sun
  
@@ -14,6 +16,6 @@ Description goes here.
 
 == Copyright
 
-Copyright (c) 2011 Eric Cranston. See LICENSE.txt for
+Copyright (c) 2011 Enphase Energy. See LICENSE.txt for
 further details.
 
