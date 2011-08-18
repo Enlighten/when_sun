@@ -25,7 +25,8 @@ Gem::Specification.new do |s|
     "VERSION",
     "lib/when_sun.rb",
     "test/helper.rb",
-    "test/test_when_sun.rb"
+    "test/test_when_sun.rb",
+    "when_sun.gemspec"
   ]
   s.homepage = %q{http://github.com/cracell/when_sun}
   s.licenses = ["MIT"]
