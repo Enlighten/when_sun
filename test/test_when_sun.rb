@@ -36,4 +36,9 @@ class TestWhenSun < Test::Unit::TestCase
     assert_raise(RuntimeError) { WhenSun.calculate(:foo, Date.new(2010, 3, 8), 43.779, 11.432) }
   end
 
+  def test_sunset_should_be_greater_than_sunrise
+    rise = WhenSun.rise(Date.new(2011, 8, 22), 37.38605170, -122.08385110)
+    set = WhenSun.set(Date.new(2011, 8, 22), 37.38605170, -122.08385110)
+    assert_operator(set, '>', rise)
+  end
 end

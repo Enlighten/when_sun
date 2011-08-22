@@ -87,16 +87,10 @@ class WhenSun
     local_mean_time = suns_local_hour_hours + sun_right_ascension_hours - (0.06571 * approximate_time) - 6.622
 
     # UT = T - lngHour
-    gmt_hours = local_mean_time - longitude_hour
-    gmt_hours -= 24.0 if gmt_hours > 24
-    gmt_hours += 24.0 if gmt_hours <  0
 
-    hour = gmt_hours.floor
-    hour_remainder = (gmt_hours.to_f - hour.to_f) * 60.0
-    minute = hour_remainder.floor
-    seconds = (hour_remainder - minute) * 60.0
+    local_mean_time %= 24
 
-    Time.gm(date.year, date.month, date.day, hour, minute, seconds)
+    return (date.to_datetime() +(local_mean_time - longitude_hour)/24).to_time
   end
 
   private
@@ -120,5 +114,27 @@ class WhenSun
     end
     d
   end
+end
 
+
+#Backporting some ruby 1.9 stuff. #TODO: Ensure this works on 1.9.2 and turn this patch off for 1.9.2
+Date::HALF_DAYS_IN_DAY = Rational(1, 2)
+class Date
+   def to_datetime()
+     DateTime.new!(jd_to_ajd(jd, 0, 0), @of, @sg)
+   end
+
+   def jd_to_ajd(jd, fr, of=0)
+     jd + fr - of - HALF_DAYS_IN_DAY
+   end
+end
+class DateTime
+  def to_time
+    d = new_offset(0)
+    d.instance_eval do
+      Time.utc(year, mon, mday, hour, min, sec,
+               (sec_fraction * 86400000000).to_i)
+    end.
+        getlocal
+  end
 end
