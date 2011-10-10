@@ -118,23 +118,26 @@ end
 
 
 #Backporting some ruby 1.9 stuff. #TODO: Ensure this works on 1.9.2 and turn this patch off for 1.9.2
-Date::HALF_DAYS_IN_DAY = Rational(1, 2)
-class Date
-   def to_datetime()
-     DateTime.new!(jd_to_ajd(jd, 0, 0), @of, @sg)
-   end
+if RUBY_VERSION < '1.9'
+  Date::HALF_DAYS_IN_DAY = Rational(1, 2)
+  class Date
+    def to_datetime()
+      DateTime.new!(jd_to_ajd(jd, 0, 0), @of, @sg)
+    end
 
-   def jd_to_ajd(jd, fr, of=0)
-     jd + fr - of - HALF_DAYS_IN_DAY
-   end
-end
-class DateTime
-  def to_time
-    d = new_offset(0)
-    d.instance_eval do
-      Time.utc(year, mon, mday, hour, min, sec,
-               (sec_fraction * 86400000000).to_i)
-    end.
-        getlocal
+    def jd_to_ajd(jd, fr, of=0)
+      jd + fr - of - HALF_DAYS_IN_DAY
+    end
+  end
+
+  class DateTime
+    def to_time
+      d = new_offset(0)
+      d.instance_eval do
+        Time.utc(year, mon, mday, hour, min, sec,
+                 (sec_fraction * 86400000000).to_i)
+      end.
+          getlocal
+    end
   end
 end
