@@ -117,9 +117,9 @@ class WhenSun
 end
 
 
-#Backporting some ruby 1.9 stuff. #TODO: Ensure this works on 1.9.2 and turn this patch off for 1.9.2
+#Backporting some date methods from Ruby 1.9
 if RUBY_VERSION < '1.9'
-  Date::HALF_DAYS_IN_DAY = Rational(1, 2)
+  Date::HALF_DAYS_IN_DAY = Rational(1, 2) if RUBY_VERSION < '1.8.7'
   class Date
     def to_datetime()
       DateTime.new!(jd_to_ajd(jd, 0, 0), @of, @sg)

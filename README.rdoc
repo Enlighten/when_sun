@@ -4,7 +4,7 @@ WhenSun is a RubyGem for calculating the sunrise and sunset for locations based 
 
 This gem is based on https://github.com/joeyates/ruby-sun-times implementation of http://williams.best.vwh.net/sunrise_sunset_algorithm.htm
 
-Note: Currently this gem is only being tested against Ruby 1.8.6 and Ruby 1.9.2. If you are using a different version please run the unit tests against it and patch as needed.
+Note: This gem is tested against Ruby 1.8.6, Ruby 1.8.7 and Ruby 1.9.2. If you are using a different version please run the unit tests against it and patch as needed.
 
 == Contributing to when_sun
  
