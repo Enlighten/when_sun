@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{when_sun}
-  s.version = "1.0.0"
+  s.version = "1.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = [%q{Eric Cranston}]
-  s.date = %q{2011-10-10}
+  s.authors = ["Eric Cranston"]
+  s.date = %q{2011-11-10}
   s.description = %q{WhenSun is a RubyGem for calculating the sunrise and sunset for locations based on the date, latitude and longitude.}
   s.email = %q{ecranston@enphaseenergy.com}
   s.extra_rdoc_files = [
@@ -29,9 +29,9 @@ Gem::Specification.new do |s|
     "when_sun.gemspec"
   ]
   s.homepage = %q{http://github.com/cracell/when_sun}
-  s.licenses = [%q{MIT}]
-  s.require_paths = [%q{lib}]
-  s.rubygems_version = %q{1.8.6}
+  s.licenses = ["MIT"]
+  s.require_paths = ["lib"]
+  s.rubygems_version = %q{1.4.2}
   s.summary = %q{WhenSun is a RubyGem for calculating the sunrise and sunset for locations based on the date, latitude and longitude.}
 
   if s.respond_to? :specification_version then
